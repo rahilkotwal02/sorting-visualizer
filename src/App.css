@@ -1,0 +1,184 @@
+/* Cosmic Horizon Design System Styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Custom CSS Variables for the Cosmic Horizon Design System */
+:root {
+  /* Core Colors */
+  --cosmic-dark: #0D1117;
+  --interactive-blue: #3B82F6;
+  --accent-purple: #A855F7;
+  
+  /* Status Colors */
+  --success-green: #22C55E;
+  --warning-yellow: #EAB308;
+  --danger-red: #EF4444;
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  
+  /* Font Family */
+  --font-cosmic: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-cosmic);
+  background: var(--cosmic-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--accent-purple), var(--interactive-blue));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #9333EA, #2563EB);
+}
+
+/* Focus Styles for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--interactive-blue);
+  outline-offset: 2px;
+}
+
+/* Custom Slider Styles */
+.slider-cosmic {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.slider-cosmic::-webkit-slider-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #374151;
+}
+
+.slider-cosmic::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #374151;
+  border: none;
+}
+
+/* Animation for reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+  }
+  
+  .bg-gradient-to-r {
+    background: var(--interactive-blue) !important;
+  }
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: var(--text-primary);
+}
+
+/* Utility Classes */
+.cosmic-gradient {
+  background: linear-gradient(135deg, var(--accent-purple), var(--interactive-blue));
+}
+
+.cosmic-text-gradient {
+  background: linear-gradient(135deg, var(--accent-purple), var(--interactive-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading Animation */
+@keyframes cosmic-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.cosmic-loading {
+  animation: cosmic-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Shimmer Effect for Skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
